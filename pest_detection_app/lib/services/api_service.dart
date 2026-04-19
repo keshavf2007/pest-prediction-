@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:pest_detection_app/models/prediction_model.dart';
@@ -34,13 +35,13 @@ class ApiService {
   }
 
   /// Send image to Flask API for pest prediction
-  /// 
+  ///
   /// Parameters:
   ///   - imageFile: File object of the image to analyze
-  /// 
+  ///
   /// Returns:
   ///   - PredictionModel with prediction results
-  /// 
+  ///
   /// Throws:
   ///   - ApiException if the request fails
   static Future<PredictionModel> predictPest(File imageFile) async {
@@ -83,7 +84,8 @@ class ApiService {
         );
       } else if (response.statusCode == 503) {
         throw ApiException(
-          message: 'Backend service unavailable. Please ensure the Flask server is running.',
+          message:
+              'Backend service unavailable. Please ensure the Flask server is running.',
           code: 'SERVICE_UNAVAILABLE',
         );
       } else {

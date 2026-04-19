@@ -33,11 +33,8 @@ class PestDetectionApp extends StatelessWidget {
           centerTitle: true,
           elevation: 2,
         ),
-        cardTheme: CardTheme(
+        cardTheme: const CardThemeData(
           elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
         ),
       ),
       home: const HomeScreen(),
